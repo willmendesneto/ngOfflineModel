@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/willmendesneto/ngOfflineModel.png?branch=master)](https://travis-ci.org/willmendesneto/ngOfflineModel)
 =================
 
-### Installation
+## Installation
 
 1 - Via bower
 
@@ -22,3 +22,13 @@ Once you have ngOfflineModel in your project, just include 'keepr.ngOfflineModel
 ```javascript
     angular.module('myModule', ['keepr.ngOfflineModel'])
 ```
+
+## Author
+
+**Wilson Mendes (willmendesneto)**
++ <https://plus.google.com/+WilsonMendes>
++ <https://twitter.com/willmendesneto>
++ <http://github.com/willmendesneto>
+
+
+New features comming soon.
