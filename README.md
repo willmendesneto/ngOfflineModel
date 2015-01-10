@@ -1,2 +1,3 @@
-# ng-offline-model
+# ngOfflineModel
+
 Module for Offline operations with AngularJS
