@@ -1,0 +1,180 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/willmendesneto/.nvm/v0.10.33/bin/node',
+1 verbose cli   '/home/willmendesneto/.nvm/v0.10.33/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'karma-firefox-launcher',
+1 verbose cli   '--save-dev' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 warn package.json ngOfflineModel@0.0.1 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'karma-firefox-launcher', null ]
+7 verbose cache add name=undefined spec="karma-firefox-launcher" args=["karma-firefox-launcher",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'karma-firefox-launcher',
+8 verbose parsed url   path: 'karma-firefox-launcher',
+8 verbose parsed url   href: 'karma-firefox-launcher' }
+9 silly lockFile d7694a42-karma-firefox-launcher karma-firefox-launcher
+10 verbose lock karma-firefox-launcher /home/willmendesneto/.npm/d7694a42-karma-firefox-launcher.lock
+11 silly lockFile d7694a42-karma-firefox-launcher karma-firefox-launcher
+12 silly lockFile d7694a42-karma-firefox-launcher karma-firefox-launcher
+13 verbose addNamed [ 'karma-firefox-launcher', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile 2da53663-karma-firefox-launcher karma-firefox-launcher@
+16 verbose lock karma-firefox-launcher@ /home/willmendesneto/.npm/2da53663-karma-firefox-launcher.lock
+17 silly addNameRange { name: 'karma-firefox-launcher', range: '*', hasData: false }
+18 verbose request where is /karma-firefox-launcher
+19 verbose request registry https://registry.npmjs.org/
+20 verbose request id bfe8a253a25a75f5
+21 verbose url raw /karma-firefox-launcher
+22 verbose url resolving [ 'https://registry.npmjs.org/', './karma-firefox-launcher' ]
+23 verbose url resolved https://registry.npmjs.org/karma-firefox-launcher
+24 verbose request where is https://registry.npmjs.org/karma-firefox-launcher
+25 info trying registry request attempt 1 at 22:41:17
+26 verbose etag "4T3PWYXDE9CIZUAF3XBOVXMMX"
+27 http GET https://registry.npmjs.org/karma-firefox-launcher
+28 http 200 https://registry.npmjs.org/karma-firefox-launcher
+29 silly registry.get cb [ 200,
+29 silly registry.get   { date: 'Tue, 13 Jan 2015 01:41:18 GMT',
+29 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+29 silly registry.get     etag: '"EIQL6W2VFQRJLWTBS2VP3SUDF"',
+29 silly registry.get     'content-type': 'application/json',
+29 silly registry.get     'cache-control': 'max-age=60',
+29 silly registry.get     'content-length': '12089',
+29 silly registry.get     'accept-ranges': 'bytes',
+29 silly registry.get     via: '1.1 varnish',
+29 silly registry.get     age: '33',
+29 silly registry.get     'x-served-by': 'cache-iad2144-IAD',
+29 silly registry.get     'x-cache': 'HIT',
+29 silly registry.get     'x-cache-hits': '1',
+29 silly registry.get     'x-timer': 'S1421113278.644117,VS0,VE0',
+29 silly registry.get     vary: 'Accept',
+29 silly registry.get     'keep-alive': 'timeout=10, max=50',
+29 silly registry.get     connection: 'Keep-Alive' } ]
+30 silly addNameRange number 2 { name: 'karma-firefox-launcher', range: '*', hasData: true }
+31 silly addNameRange versions [ 'karma-firefox-launcher',
+31 silly addNameRange   [ '0.0.1',
+31 silly addNameRange     '0.0.2',
+31 silly addNameRange     '0.0.3',
+31 silly addNameRange     '0.1.0',
+31 silly addNameRange     '0.1.1',
+31 silly addNameRange     '0.1.2',
+31 silly addNameRange     '0.1.3',
+31 silly addNameRange     '0.1.4' ] ]
+32 verbose addNamed [ 'karma-firefox-launcher', '0.1.4' ]
+33 verbose addNamed [ '0.1.4', '0.1.4' ]
+34 silly lockFile 3792356a-karma-firefox-launcher-0-1-4 karma-firefox-launcher@0.1.4
+35 verbose lock karma-firefox-launcher@0.1.4 /home/willmendesneto/.npm/3792356a-karma-firefox-launcher-0-1-4.lock
+36 silly lockFile aec5aa3f-karma-firefox-launcher-0-1-4-tgz https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz
+37 verbose lock https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz /home/willmendesneto/.npm/aec5aa3f-karma-firefox-launcher-0-1-4-tgz.lock
+38 verbose addRemoteTarball [ 'https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz',
+38 verbose addRemoteTarball   '5d4abb4abba0e45e83fd94b1f6ff84ec46929c6b' ]
+39 info retry fetch attempt 1 at 22:41:18
+40 verbose fetch to= /tmp/npm-5593-rtWQbeXU/registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz
+41 http GET https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz
+42 http 200 https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz
+43 silly lockFile aec5aa3f-karma-firefox-launcher-0-1-4-tgz https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz
+44 silly lockFile aec5aa3f-karma-firefox-launcher-0-1-4-tgz https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz
+45 silly lockFile 3792356a-karma-firefox-launcher-0-1-4 karma-firefox-launcher@0.1.4
+46 silly lockFile 3792356a-karma-firefox-launcher-0-1-4 karma-firefox-launcher@0.1.4
+47 silly lockFile 2da53663-karma-firefox-launcher karma-firefox-launcher@
+48 silly lockFile 2da53663-karma-firefox-launcher karma-firefox-launcher@
+49 silly resolved [ { name: 'karma-firefox-launcher',
+49 silly resolved     version: '0.1.4',
+49 silly resolved     description: 'A Karma plugin. Launcher for Firefox.',
+49 silly resolved     main: 'index.js',
+49 silly resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+49 silly resolved     repository:
+49 silly resolved      { type: 'git',
+49 silly resolved        url: 'git://github.com/karma-runner/karma-firefox-launcher.git' },
+49 silly resolved     keywords: [ 'karma-plugin', 'karma-launcher', 'firefox' ],
+49 silly resolved     author: { name: 'Vojta Jina', email: 'vojta.jina@gmail.com' },
+49 silly resolved     dependencies: {},
+49 silly resolved     peerDependencies: { karma: '>=0.9' },
+49 silly resolved     license: 'MIT',
+49 silly resolved     devDependencies:
+49 silly resolved      { grunt: '~0.4.1',
+49 silly resolved        'grunt-npm': '~0.0.2',
+49 silly resolved        'grunt-bump': '~0.0.7',
+49 silly resolved        'grunt-auto-release': '~0.0.2' },
+49 silly resolved     contributors:
+49 silly resolved      [ [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object],
+49 silly resolved        [Object] ],
+49 silly resolved     bugs: { url: 'https://github.com/karma-runner/karma-firefox-launcher/issues' },
+49 silly resolved     homepage: 'https://github.com/karma-runner/karma-firefox-launcher',
+49 silly resolved     _id: 'karma-firefox-launcher@0.1.4',
+49 silly resolved     dist:
+49 silly resolved      { shasum: '5d4abb4abba0e45e83fd94b1f6ff84ec46929c6b',
+49 silly resolved        tarball: 'http://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz' },
+49 silly resolved     _from: 'karma-firefox-launcher@',
+49 silly resolved     _npmVersion: '1.4.4',
+49 silly resolved     _npmUser: { name: 'vojtajina', email: 'vojta.jina@gmail.com' },
+49 silly resolved     maintainers: [ [Object] ],
+49 silly resolved     directories: {},
+49 silly resolved     _shasum: '5d4abb4abba0e45e83fd94b1f6ff84ec46929c6b',
+49 silly resolved     _resolved: 'https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.4.tgz' } ]
+50 info install karma-firefox-launcher@0.1.4 into /home/willmendesneto/projects/ng-offline-model
+51 info installOne karma-firefox-launcher@0.1.4
+52 verbose node_modules/karma-firefox-launcher unbuild
+53 verbose tar unpack /home/willmendesneto/.npm/karma-firefox-launcher/0.1.4/package.tgz
+54 silly lockFile 94925cff-e-modules-karma-firefox-launcher tar:///home/willmendesneto/projects/ng-offline-model/node_modules/karma-firefox-launcher
+55 verbose lock tar:///home/willmendesneto/projects/ng-offline-model/node_modules/karma-firefox-launcher /home/willmendesneto/.npm/94925cff-e-modules-karma-firefox-launcher.lock
+56 silly lockFile f10f21fc-refox-launcher-0-1-4-package-tgz tar:///home/willmendesneto/.npm/karma-firefox-launcher/0.1.4/package.tgz
+57 verbose lock tar:///home/willmendesneto/.npm/karma-firefox-launcher/0.1.4/package.tgz /home/willmendesneto/.npm/f10f21fc-refox-launcher-0-1-4-package-tgz.lock
+58 silly gunzTarPerm modes [ '755', '644' ]
+59 silly gunzTarPerm extractEntry package.json
+60 silly gunzTarPerm extractEntry LICENSE
+61 silly gunzTarPerm extractEntry index.js
+62 silly lockFile 94925cff-e-modules-karma-firefox-launcher tar:///home/willmendesneto/projects/ng-offline-model/node_modules/karma-firefox-launcher
+63 silly lockFile 94925cff-e-modules-karma-firefox-launcher tar:///home/willmendesneto/projects/ng-offline-model/node_modules/karma-firefox-launcher
+64 silly lockFile f10f21fc-refox-launcher-0-1-4-package-tgz tar:///home/willmendesneto/.npm/karma-firefox-launcher/0.1.4/package.tgz
+65 silly lockFile f10f21fc-refox-launcher-0-1-4-package-tgz tar:///home/willmendesneto/.npm/karma-firefox-launcher/0.1.4/package.tgz
+66 info preinstall karma-firefox-launcher@0.1.4
+67 verbose readDependencies using package.json deps
+68 verbose readDependencies using package.json deps
+69 silly resolved []
+70 verbose about to build /home/willmendesneto/projects/ng-offline-model/node_modules/karma-firefox-launcher
+71 info build /home/willmendesneto/projects/ng-offline-model/node_modules/karma-firefox-launcher
+72 verbose linkStuff [ false,
+72 verbose linkStuff   false,
+72 verbose linkStuff   false,
+72 verbose linkStuff   '/home/willmendesneto/projects/ng-offline-model/node_modules' ]
+73 info linkStuff karma-firefox-launcher@0.1.4
+74 verbose linkBins karma-firefox-launcher@0.1.4
+75 verbose linkMans karma-firefox-launcher@0.1.4
+76 verbose rebuildBundles karma-firefox-launcher@0.1.4
+77 info install karma-firefox-launcher@0.1.4
+78 info postinstall karma-firefox-launcher@0.1.4
+79 verbose saving { 'karma-firefox-launcher': '^0.1.4' }
+80 error Error: EACCES, open '/home/willmendesneto/projects/ng-offline-model/package.json'
+80 error  { [Error: EACCES, open '/home/willmendesneto/projects/ng-offline-model/package.json']
+80 error   errno: 3,
+80 error   code: 'EACCES',
+80 error   path: '/home/willmendesneto/projects/ng-offline-model/package.json' }
+81 error Please try running this command again as root/Administrator.
+82 error System Linux 3.17.7-200.fc20.x86_64
+83 error command "/home/willmendesneto/.nvm/v0.10.33/bin/node" "/home/willmendesneto/.nvm/v0.10.33/bin/npm" "install" "karma-firefox-launcher" "--save-dev"
+84 error cwd /home/willmendesneto/projects/ng-offline-model
+85 error node -v v0.10.33
+86 error npm -v 1.4.28
+87 error path /home/willmendesneto/projects/ng-offline-model/package.json
+88 error code EACCES
+89 error errno 3
+90 error stack Error: EACCES, open '/home/willmendesneto/projects/ng-offline-model/package.json'
+91 verbose exit [ 3, true ]

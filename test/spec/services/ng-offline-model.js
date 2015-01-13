@@ -124,7 +124,7 @@ describe('Service: ngOfflineModel', function () {
 
       var contact = [
         {
-          _id: 098340984093,
+          _id: '098340984093',
           name: 'This is a test',
           address: 'Adress test',
           phone: '557188998877',
@@ -279,7 +279,7 @@ describe('Service: ngOfflineModel', function () {
 
       var contact = [
         {
-          _id: 098340984093,
+          _id: '098340984093',
           name: 'This is a test',
           address: 'Adress test',
           phone: '557188998877',
