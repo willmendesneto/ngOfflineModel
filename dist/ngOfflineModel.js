@@ -140,24 +140,24 @@ angular.module('keepr.ngOfflineModel')
       return out;
     };
 
-    var _key = null,
-        _items = null,
-        _fields = null
-    ;
+    var _items = null,
+        _storageType = 'localStorage';
 
     // Public API here
     return {
-      _secret: 'my-awesome-key',
-      init: function (key, _items, fields, params) {
+      primaryKey: '_id',
+      fields: null,
+      key: null,
+      secret: 'my-awesome-key',
+      init: function (_items, params) {
 
         var self = this;
-        _fields = fields || null;
-        _key = key;
         params = params || {};
         angular.extend(self, params);
 
-        CryptoOfflineStorage.init({secret: self._secret});
-        var _itemsCached = CryptoOfflineStorage.get(_key);
+        CryptoOfflineStorage.storageType = _storageType;
+        CryptoOfflineStorage.init({secret: this.secret});
+        var _itemsCached = CryptoOfflineStorage.get(this.key);
 
         if(_itemsCached !== null) {
           _items = _itemsCached;
@@ -165,14 +165,14 @@ angular.module('keepr.ngOfflineModel')
           _items = [];
         }
 
-        if (_fields !== null){
+        if (this.fields !== null){
           var _itemsLength = _items.length;
           var i = 0;
           for ( ; _itemsLength > i; i++) {
             _items[i] = this.createValueObject(_items[i]);
           }
         }
-        CryptoOfflineStorage.set(_key, _items);
+        CryptoOfflineStorage.set(this.key, _items);
         self.setListItems(_items, params);
 
         //  Extend params for create a factory in service
@@ -180,17 +180,21 @@ angular.module('keepr.ngOfflineModel')
       },
       createValueObject: function(item) {
         var obj = {};
-        angular.forEach( _fields, function( field ) {
+        angular.forEach( this.fields, function( field ) {
           obj[field] = item[field] || '';
         });
         return obj;
       },
+      setStorageType: function(storageType) {
+        _storageType = storageType;
+        return this;
+      },
       setKey: function(key){
-        _key = key;
+        this.key = key;
         return this;
       },
       getKey: function(){
-        return _key;
+        return this.key;
       },
       setListItems: function(items){
         _items = items;
@@ -200,34 +204,35 @@ angular.module('keepr.ngOfflineModel')
         return _items;
       },
       setFields: function(fields){
-        _fields = fields;
+        this.fields = fields;
         return this;
       },
       countTotalItems: function(items) {
-        return (maxListItems(items, '_id') || 0) + 1;
+        return (maxListItems(items, this.primaryKey) || 0) + 1;
       },
       create: function (item) {
         item = this.createValueObject(item);
-        item._id = this.countTotalItems(_items);
+        item[this.primaryKey] = this.countTotalItems(_items);
         _items.push(item);
-        CryptoOfflineStorage.set(_key, _items);
+        CryptoOfflineStorage.set(this.key, _items);
         return _items;
       },
       update: function (item) {
         var self = this;
         _items = _items.map( function (element) {
-          if ( element._id === item._id){
+          if ( element[self.primaryKey] === item[self.primaryKey]){
             element = self.createValueObject(item);
           }
           return element;
         });
-        CryptoOfflineStorage.set(_key, _items);
+        CryptoOfflineStorage.set(this.key, _items);
         return _items;
       },
       delete: function(index) {
         var db = this.getListItems();
+        var self = this;
         var _id = db.filter( function (element, pos) {
-          if ( element._id === index){
+          if ( element[self.primaryKey] === index){
             element.pos = pos;
             return element;
           }
@@ -237,7 +242,7 @@ angular.module('keepr.ngOfflineModel')
           var item = db.splice(_id[0].pos, 1);
           if (typeof item[0] ===  'object') {
             this.setListItems(db);
-            CryptoOfflineStorage.set(_key, db);
+            CryptoOfflineStorage.set(this.key, db);
             return item[0];
           }
         }
