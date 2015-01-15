@@ -6,7 +6,7 @@ describe('Service: ngOfflineModel', function () {
   beforeEach(module('keepr.ngOfflineModel'));
 
   // instantiate service
-  var ngOfflineModel, myMock, MyNgOfflineModel;
+  var ngOfflineModel, myMock, MyNgOfflineModel, params;
 
   describe('ngOfflineModel: localStorage', function () {
 
@@ -20,7 +20,7 @@ describe('Service: ngOfflineModel', function () {
         {_id: 5, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 105', phone: '557188339933'},
         {_id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933'}
       ];
-      var params = {
+      params = {
         key: 'myMock',
         primaryKey: '_id',
         fields: ['_id', 'name', 'address', 'phone']
@@ -158,6 +158,18 @@ describe('Service: ngOfflineModel', function () {
         expect(typeof listItems[i].phone !== 'undefined').toBe(true);
       }
 
+    });
+
+    it('#clearAll', function () {
+      MyNgOfflineModel = ngOfflineModel.setStorageType('localStorage')
+                                        .init(myMock, params);
+
+      console.log(MyNgOfflineModel.getListItems().length);
+
+      expect(MyNgOfflineModel.getListItems().length).toEqual(7);
+
+      MyNgOfflineModel.clearAll();
+      expect(MyNgOfflineModel.getListItems().length).toEqual(0);
     });
 
   });
@@ -314,6 +326,14 @@ describe('Service: ngOfflineModel', function () {
       }
 
     });
+
+    it('#clearAll', function () {
+      expect(MyNgOfflineModel.getListItems().length).toEqual(7);
+
+      MyNgOfflineModel.clearAll();
+      expect(MyNgOfflineModel.getListItems().length).toEqual(0);
+    });
+
   });
 
 });

@@ -125,5 +125,13 @@ describe('Service: CryptoOfflineStorage', function () {
         expect(CryptoOfflineStorage.remove(key)).toBe(true);
       });
     });
+
+    describe('clearAll', function(){
+      it('should remove all items with success', function () {
+        CryptoOfflineStorage.set(key, string);
+        expect(CryptoOfflineStorage.clearAll()).toBe(true);
+        expect(CryptoOfflineStorage.get(key)).toBe(null);
+      });
+    });
   });
 });

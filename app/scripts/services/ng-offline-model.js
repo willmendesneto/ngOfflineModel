@@ -135,6 +135,10 @@ angular.module('keepr.ngOfflineModel')
           }
         }
         return false;
+      },
+      clearAll: function() {
+        _items = [];
+        return CryptoOfflineStorage.clearAll();
       }
     };
 
