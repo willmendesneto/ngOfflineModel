@@ -12,6 +12,11 @@
     "sessionStorage",
     "module"
   ],
+  "ignore": [
+    "*.{js,yml,md,log}",
+    "app",
+    "test"
+  ],
   "main": "dist/ngOfflineModel.js",
   "license": "MIT",
   "description": "NGOfflineModel: Your Module for Offline operations with AngularJS",
