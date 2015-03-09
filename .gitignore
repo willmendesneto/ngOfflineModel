@@ -4,6 +4,7 @@ docs
 app/bower_components
 .tmp
 .sass-cache
+npm-debug.log
 
 protractor_conf.js
 
