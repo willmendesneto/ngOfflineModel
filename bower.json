@@ -15,6 +15,7 @@
   "ignore": [
     "*.{js,yml,md,log}",
     "app",
+    "dist/scripts",
     "test"
   ],
   "main": "dist/ngOfflineModel.js",
