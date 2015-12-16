@@ -8,6 +8,10 @@ module.exports = function(config) {
 
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
+    
+    preprocessors: {
+      'app/scripts/**/*.js': ['coverage']
+    },
 
     // list of files / patterns to load in the browser
     files: [
@@ -47,8 +51,27 @@ module.exports = function(config) {
     // - IE (only Windows)
     browsers: ['PhantomJS', 'Firefox'],
 
+    reporters: ['progress',  'coverage'],
 
-    // Continuous Integration mode
+    //  coverage reporter configuration
+    coverageReporter: {
+      dir:'coverage/',
+      reporters: [
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' }
+      ]
+    },
+
+
+    plugins: [
+      'karma-ng-html2js-preprocessor',
+      'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
+      'karma-jasmine',
+      'karma-coverage'
+    ],
+
+
     // if true, it capture browsers, run tests and exit
     singleRun: true
   });

@@ -5,6 +5,7 @@ app/bower_components
 .tmp
 .sass-cache
 npm-debug.log
+coverage
 
 protractor_conf.js
 

@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/willmendesneto/ngOfflineModel.png?branch=master)](https://travis-ci.org/willmendesneto/ngOfflineModel)
 =================
+[![Coverage Status](https://coveralls.io/repos/willmendesneto/ngOfflineModel/badge.svg?branch=master)](https://coveralls.io/r/willmendesneto/ngOfflineModel?branch=master)
 
 ## Installation
 

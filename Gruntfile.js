@@ -234,6 +234,15 @@ module.exports = function (grunt) {
     }
   });
 
+ grunt.registerTask('badge', 'Generate Coveralls Badge for projects', function(){
+    require('child_process').exec('cat ./coverage/report-lcov/lcov.info | ./node_modules/.bin/coveralls', function(error, stdin, stdout) {
+      if (!error) {
+        console.log('Coverage task is not running automatically');
+      }
+    });
+
+  });
+
   grunt.registerTask('buildNgModuleFile', 'Task for build ng module script file.', function(filename) {
     var path = require('path'),
         fs = require('fs'),
@@ -297,7 +306,8 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'connect:test',
-    'karma'
+    'karma',
+    'badge'
   ]);
 
   grunt.registerTask('build', [
