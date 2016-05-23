@@ -49,8 +49,8 @@ angular.module('keepr.ngOfflineModel')
        * @method encrypt
        */
       encrypt: function(object, secret) {
-        var message = loadCrypto ? JSON.stringify(object) : object;
-        return loadCrypto ? CryptoJS.TripleDES.encrypt(message, secret) : JSON.stringify(object);
+        var message = JSON.stringify(object);
+        return loadCrypto ? CryptoJS.TripleDES.encrypt(message, secret) : message;
       },
 
       /**

@@ -10,16 +10,21 @@ describe('Service: CryptoOfflineStorage', function () {
     secret,
     storageType,
     key,
-    string;
+    dataString;
+
+
+  beforeEach(inject(function (_CryptoOfflineStorage_) {
+    CryptoOfflineStorage = _CryptoOfflineStorage_;
+    secret = 'secret';
+    key = 'key';
+    dataString = { testValue: 'test'};
+  }));
 
   describe('using "localStorage"', function(){
 
-    beforeEach(inject(function (_CryptoOfflineStorage_) {
-      CryptoOfflineStorage = _CryptoOfflineStorage_;
-      secret = 'secret';
-      key = 'key';
-      string = 'test';
-    }));
+    beforeEach(function () {
+      storageType = 'localStorage';
+    });
 
     describe('init', function(){
       it('service should be initialyzeds with internal variables configurateds', function () {
@@ -34,19 +39,19 @@ describe('Service: CryptoOfflineStorage', function () {
 
     describe('encrypt', function(){
       it('should returns a string with informations', function () {
-        expect(typeof CryptoOfflineStorage.encrypt(string, secret) === 'string').toBe(true);
+        expect(typeof CryptoOfflineStorage.encrypt(dataString, secret) === 'string').toBe(true);
       });
     });
 
-    /*describe('decrypt', function(){
-      it('should returns a string decrypted', function () {
-        expect(CryptoOfflineStorage.decrypt(string, secret)).toBe(string);
+    describe('decrypt', function(){
+      it('should returns a json object decrypted', function () {
+        expect(CryptoOfflineStorage.decrypt(JSON.stringify(dataString), secret)).toEqual(dataString);
       });
-    });*/
+    });
 
     describe('set', function(){
       it('should returns "true" when element is setted', function () {
-        expect(CryptoOfflineStorage.set(key, string)).toBe(true);
+        expect(CryptoOfflineStorage.set(key, dataString)).toBe(true);
       });
 
       it('should returns "false" when second param isn\'t setted', function () {
@@ -55,15 +60,15 @@ describe('Service: CryptoOfflineStorage', function () {
     });
 
     describe('get', function(){
-      it('should returns the original string', function () {
-        CryptoOfflineStorage.set(key, string);
-        expect(CryptoOfflineStorage.get(key)).toBe(string);
+      it('should returns the original json object', function () {
+        CryptoOfflineStorage.set(key, dataString);
+        expect(CryptoOfflineStorage.get(key)).toEqual(dataString);
       });
     });
 
     describe('remove', function(){
       it('should returns "true" when element was removed with success', function () {
-        CryptoOfflineStorage.set(key, string);
+        CryptoOfflineStorage.set(key, dataString);
         expect(CryptoOfflineStorage.remove(key)).toBe(true);
       });
     });
@@ -71,13 +76,9 @@ describe('Service: CryptoOfflineStorage', function () {
 
   describe('using "sessionStorage"', function(){
 
-    beforeEach(inject(function (_CryptoOfflineStorage_) {
-      CryptoOfflineStorage = _CryptoOfflineStorage_;
-      secret = 'secret';
+    beforeEach(function () {
       storageType = 'sessionStorage';
-      key = 'key';
-      string = 'test';
-    }));
+    });
 
     describe('init', function(){
       it('service should be initialyzeds with internal variables configurateds', function () {
@@ -92,19 +93,19 @@ describe('Service: CryptoOfflineStorage', function () {
 
     describe('encrypt', function(){
       it('should returns a string with informations', function () {
-        expect(typeof CryptoOfflineStorage.encrypt(string, secret) === 'string').toBe(true);
+        expect(typeof CryptoOfflineStorage.encrypt(dataString, secret) === 'string').toBe(true);
       });
     });
 
-    /*describe('decrypt', function(){
-      it('should returns a string decrypted', function () {
-        expect(CryptoOfflineStorage.decrypt(string, secret)).toBe(string);
+    describe('decrypt', function(){
+      it('should returns a json object decrypted', function () {
+        expect(CryptoOfflineStorage.decrypt(JSON.stringify(dataString), secret)).toEqual(dataString);
       });
-    });*/
+    });
 
     describe('set', function(){
       it('should returns "true" when element is setted', function () {
-        expect(CryptoOfflineStorage.set(key, string)).toBe(true);
+        expect(CryptoOfflineStorage.set(key, dataString)).toBe(true);
       });
 
       it('should returns "false" when second param isn\'t setted', function () {
@@ -113,22 +114,22 @@ describe('Service: CryptoOfflineStorage', function () {
     });
 
     describe('get', function(){
-      it('should returns the original string', function () {
-        CryptoOfflineStorage.set(key, string);
-        expect(CryptoOfflineStorage.get(key)).toBe(string);
+      it('should returns the original json object', function () {
+        CryptoOfflineStorage.set(key, dataString);
+        expect(CryptoOfflineStorage.get(key)).toEqual(dataString);
       });
     });
 
     describe('remove', function(){
       it('should returns "true" when element was removed with success', function () {
-        CryptoOfflineStorage.set(key, string);
+        CryptoOfflineStorage.set(key, dataString);
         expect(CryptoOfflineStorage.remove(key)).toBe(true);
       });
     });
 
     describe('clearAll', function(){
       it('should remove all items with success', function () {
-        CryptoOfflineStorage.set(key, string);
+        CryptoOfflineStorage.set(key, dataString);
         expect(CryptoOfflineStorage.clearAll()).toBe(true);
         expect(CryptoOfflineStorage.get(key)).toBe(null);
       });
