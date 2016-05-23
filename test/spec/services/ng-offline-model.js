@@ -164,8 +164,6 @@ describe('Service: ngOfflineModel', function () {
       MyNgOfflineModel = ngOfflineModel.setStorageType('localStorage')
                                         .init(myMock, params);
 
-      console.log(MyNgOfflineModel.getListItems().length);
-
       expect(MyNgOfflineModel.getListItems().length).toEqual(7);
 
       MyNgOfflineModel.clearAll();
