@@ -15,7 +15,7 @@
 module.exports = function (grunt) {
 
   // Load informations of "bower.json" file
-  var bowerInfo = require('./bower.json');
+  var packageInfo = require('./package.json');
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -29,10 +29,10 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: {
       // configurable paths
-      app: bowerInfo.appPath || 'app',
+      app: packageInfo.appPath || 'app',
       dist: 'dist',
-      moduleName: bowerInfo.name,
-      moduleDescription: bowerInfo.description,
+      moduleName: packageInfo.name,
+      moduleDescription: packageInfo.description,
     },
 
     // Watches files for changes and runs tasks based on the changed files
