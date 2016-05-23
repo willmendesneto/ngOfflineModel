@@ -14,6 +14,7 @@
     "module"
   ],
   "ignore": [
+    ".*",
     "*.{js,yml,md,log}",
     "app",
     "dist/scripts",
@@ -23,7 +24,6 @@
   "license": "MIT",
   "description": "NGOfflineModel: Your Module for Offline operations with AngularJS",
   "homepage": "https://github.com/willmendesneto/ngOfflineModel",
-  "version": "0.0.2",
   "dependencies": {
     "angular": "~1.4"
   },
@@ -31,11 +31,6 @@
     "angular": "~1.4"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.8",
-    "angular-scenario": "~1.4.8",
-    "angular-resource": "~1.4.8",
-    "angular-cookies": "~1.4.8",
-    "angular-sanitize": "~1.4.8",
-    "angular-route": "~1.4.8"
+    "angular-mocks": "~1.4.8"
   }
 }
