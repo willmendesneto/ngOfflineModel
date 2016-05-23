@@ -61,17 +61,27 @@ var contactMock = [
 ];
 
 var params = {
-  key: 'contactMock', // localStorage/sessionStorage key
-  primaryKey: '_id', // primary field. This field will be increased automatically
-  fields: ['_id', 'name', 'address', 'phone'] // Fields mapped for store
+  // localStorage/sessionStorage key
+  key: 'contactMock',
+  // primary field. This field will be increased automatically
+  primaryKey: '_id',
+  // Fields mapped for store
+  fields: ['_id', 'name', 'address', 'phone'],
+  // you can add new methods via params too
+  myMethod: function() {
+    console.log('My method is working!');
+  }
 };
 
 var ContactModel = ngOfflineModel.setStorageType('localStorage')
                                   .init(contactMock, params);
 
-ContactModel.getListItems(); // return contactMock value;
-ContactModel.getKey(); // return 'contactMock';
-ContactModel.countTotalItems(contactMock); // === contactMock.length;
+// return contactMock value;
+ContactModel.getListItems();
+// return 'contactMock';
+ContactModel.getKey();
+// === contactMock.length;
+ContactModel.countTotalItems(contactMock);
 
 
 // Create an item
@@ -85,8 +95,10 @@ ContactModel.create(contact);
 // Update the item
 contact = {
   phone: '559554138698',
-  _id: 7 // This field is verified based in `primaryKey` attribute value
+  // This field is verified based in `primaryKey` attribute value
+  _id: 7
 };
+
 ContactModel.update(contact);
 
 // Removing the item
