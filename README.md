@@ -7,13 +7,19 @@
 
 ## Installation
 
-1 - Via bower
+1 - Via NPM
+
+```bash
+$ npm install ng-offline-model
+```
+
+2 - Via bower
 
 ```bash
 $ bower install ng-offline-model
 ```
 
-2 - Clone this repository and access the generated folder
+3 - Clone this repository and access the generated folder
 
 ```bash
 $ git clone git://github.com/willmendesneto/ngOfflineModel.git [project-name]
@@ -25,14 +31,16 @@ Once you have ngOfflineModel in your project, just include 'keepr.ngOfflineModel
     angular.module('myModule', ['keepr.ngOfflineModel'])
 ```
 
-3 - Methods:
+## Methods and attributes
+
+### attributes
 
 - primaryKey: Primary Key that will be used for ngOfflineModel. This value will be unique;
 - fields: Fields for mapp in ngOfflineModel. Only these chosen fields will be stored for the service;
 - key: Key used for store locally (localStorage and sessionStorage are stored key value based);
 - secret: Secret key for store;
 
-4 - Methods:
+### Methods
 
 - init: service contructor;
 - createValueObject: Create the ValueObject of item for add/edit/list, based in `fields` attribute;
@@ -48,7 +56,7 @@ Once you have ngOfflineModel in your project, just include 'keepr.ngOfflineModel
 - delete: Remove item stored locally;
 - clearAll: Clear all items stored locally, based in storageType;
 
-5 - Example:
+## Example
 
 ```javascript
 var contactMock = [
