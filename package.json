@@ -1,6 +1,6 @@
 {
   "author": "Wilson Mendes <willmendesneto@gmail.com>",
-  "name": "ngOfflineModel",
+  "name": "ng-offline-model",
   "version": "1.0.1",
   "description": "NGOfflineModel: Your Module for Offline operations with AngularJS",
   "homepage": "https://github.com/willmendesneto/ngOfflineModel",
