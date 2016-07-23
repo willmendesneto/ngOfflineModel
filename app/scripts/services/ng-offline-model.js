@@ -7,26 +7,14 @@ angular.module('keepr.ngOfflineModel')
     // ...
 
     var maxListItems = function (input, elementKey) {
-      var out;
-      if (!input) {
-        return;
-      }
-      if (elementKey === undefined || elementKey === null) {
-        elementKey = false;
-      }
-      for (var i in input) {
-        if (!elementKey) {
-          if (input[i] > out || out === undefined || out === null) {
-            out = input[i];
-          }
-        } else {
-          if (typeof input[i][elementKey] !== 'undefined' && (input[i][elementKey] > out || out === undefined || out === null)) {
-            out = input[i][elementKey];
-          }
-        }
-      }
-      return out;
+      var out = 0;
+      return input.map(function(item) {
+        return item[elementKey];
+      }).reduce(function(previous, current) {
+        return Math.max( previous, current );
+      });
     };
+
 
     var _items = null,
         _storageType = 'localStorage';
@@ -96,7 +84,7 @@ angular.module('keepr.ngOfflineModel')
         return this;
       },
       countTotalItems: function(items) {
-        return (maxListItems(items, this.primaryKey) || 0) + 1;
+        return (maxListItems(items, this.primaryKey)) + 1;
       },
       create: function (item) {
         item = this.createValueObject(item);
