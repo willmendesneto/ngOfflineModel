@@ -57,9 +57,6 @@ angular.module('keepr.ngOfflineModel')
        * @method decrypt
        */
       decrypt: function(encrypted, secret) {
-        if (typeof encrypted === 'undefined') {
-          return '';
-        }
         var decrypted = loadCrypto ? CryptoJS.TripleDES.decrypt(encrypted, secret) : JSON.parse(encrypted);
         return loadCrypto ? JSON.parse(decrypted.toString(CryptoJS.enc.Utf8)) : decrypted;
       },
