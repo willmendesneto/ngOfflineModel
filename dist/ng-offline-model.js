@@ -61,9 +61,6 @@ angular.module('keepr.ngOfflineModel')
        * @method decrypt
        */
       decrypt: function(encrypted, secret) {
-        if (typeof encrypted === 'undefined') {
-          return '';
-        }
         var decrypted = loadCrypto ? CryptoJS.TripleDES.decrypt(encrypted, secret) : JSON.parse(encrypted);
         return loadCrypto ? JSON.parse(decrypted.toString(CryptoJS.enc.Utf8)) : decrypted;
       },
@@ -129,26 +126,13 @@ angular.module('keepr.ngOfflineModel')
     // ...
 
     var maxListItems = function (input, elementKey) {
-      var out;
-      if (!input) {
-        return;
-      }
-      if (elementKey === undefined || elementKey === null) {
-        elementKey = false;
-      }
-      for (var i in input) {
-        if (!elementKey) {
-          if (input[i] > out || out === undefined || out === null) {
-            out = input[i];
-          }
-        } else {
-          if (typeof input[i][elementKey] !== 'undefined' && (input[i][elementKey] > out || out === undefined || out === null)) {
-            out = input[i][elementKey];
-          }
-        }
-      }
-      return out;
+      return input.map(function(item) {
+        return item[elementKey];
+      }).reduce(function(previous, current) {
+        return Math.max( previous, current );
+      });
     };
+
 
     var _items = null,
         _storageType = 'localStorage';
@@ -218,7 +202,7 @@ angular.module('keepr.ngOfflineModel')
         return this;
       },
       countTotalItems: function(items) {
-        return (maxListItems(items, this.primaryKey) || 0) + 1;
+        return (maxListItems(items, this.primaryKey)) + 1;
       },
       create: function (item) {
         item = this.createValueObject(item);
@@ -241,22 +225,21 @@ angular.module('keepr.ngOfflineModel')
       delete: function(index) {
         var db = this.getListItems();
         var self = this;
-        var _id = db.filter( function (element, pos) {
-          if ( element[self.primaryKey] === index){
-            element.pos = pos;
-            return element;
-          }
+        var firstItem = db.filter( function (element) {
+          return element[self.primaryKey] === index;
+        })[0];
+
+        if (!firstItem) {
+          return !!firstItem;
+        }
+
+        db = db.filter( function (element) {
+          return element[self.primaryKey] !== firstItem[self.primaryKey];
         });
 
-        if (_id.length > 0) {
-          var item = db.splice(_id[0].pos, 1);
-          if (typeof item[0] ===  'object') {
-            this.setListItems(db);
-            CryptoOfflineStorage.set(this.key, db);
-            return item[0];
-          }
-        }
-        return false;
+        this.setListItems(db);
+        CryptoOfflineStorage.set(this.key, db);
+        return firstItem;
       },
       clearAll: function() {
         _items = [];

@@ -7,7 +7,6 @@ angular.module('keepr.ngOfflineModel')
     // ...
 
     var maxListItems = function (input, elementKey) {
-      var out = 0;
       return input.map(function(item) {
         return item[elementKey];
       }).reduce(function(previous, current) {
@@ -107,22 +106,21 @@ angular.module('keepr.ngOfflineModel')
       delete: function(index) {
         var db = this.getListItems();
         var self = this;
-        var _id = db.filter( function (element, pos) {
-          if ( element[self.primaryKey] === index){
-            element.pos = pos;
-            return element;
-          }
+        var firstItem = db.filter( function (element) {
+          return element[self.primaryKey] === index;
+        })[0];
+
+        if (!firstItem) {
+          return !!firstItem;
+        }
+
+        db = db.filter( function (element) {
+          return element[self.primaryKey] !== firstItem[self.primaryKey];
         });
 
-        if (_id.length > 0) {
-          var item = db.splice(_id[0].pos, 1);
-          if (typeof item[0] ===  'object') {
-            this.setListItems(db);
-            CryptoOfflineStorage.set(this.key, db);
-            return item[0];
-          }
-        }
-        return false;
+        this.setListItems(db);
+        CryptoOfflineStorage.set(this.key, db);
+        return firstItem;
       },
       clearAll: function() {
         _items = [];
