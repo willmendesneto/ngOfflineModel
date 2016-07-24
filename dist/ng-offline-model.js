@@ -130,7 +130,7 @@ angular.module('keepr.ngOfflineModel')
         return item[elementKey];
       }).reduce(function(previous, current) {
         return Math.max( previous, current );
-      });
+      }, 0);
     };
 
 
@@ -144,33 +144,33 @@ angular.module('keepr.ngOfflineModel')
       key: null,
       secret: 'my-awesome-key',
       init: function (_items, params) {
-
-        var self = this;
         params = params || {};
-        angular.extend(self, params);
+        angular.extend(this, params);
 
         CryptoOfflineStorage.storageType = _storageType;
         CryptoOfflineStorage.init({secret: this.secret});
         var _itemsCached = CryptoOfflineStorage.get(this.key);
 
-        if(_itemsCached !== null) {
+        if(angular.isArray(_itemsCached)) {
           _items = _itemsCached;
-        } else if (!angular.isArray(_items)) {
-          _items = [];
         }
 
-        if (this.fields !== null){
-          var _itemsLength = _items.length;
-          var i = 0;
-          for ( ; _itemsLength > i; i++) {
-            _items[i] = this.createValueObject(_items[i]);
-          }
+        if (angular.isArray(this.fields)){
+          _items = this.createValueObjects(_items);
         }
+
         CryptoOfflineStorage.set(this.key, _items);
-        self.setListItems(_items, params);
+        this.setListItems(_items, params);
 
         //  Extend params for create a factory in service
-        return self;
+        return this;
+      },
+      createValueObjects: function(items) {
+        var self = this;
+        items = items.map(function(item) {
+          return self.createValueObject(item);
+        });
+        return items;
       },
       createValueObject: function(item) {
         var obj = {};

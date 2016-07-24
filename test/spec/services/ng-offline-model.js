@@ -1,37 +1,39 @@
 'use strict';
 
+var resetMock = function() {
+  return [
+    {_id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 101', phone: '557188339933'},
+    {_id: 2, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 102', phone: '557188339933'},
+    {_id: 3, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 103', phone: '557188339933'},
+    {_id: 4, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 104', phone: '557188339933'},
+    {_id: 5, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 105', phone: '557188339933'},
+    {_id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933'}
+  ];
+};
 describe('Service: ngOfflineModel', function () {
 
   // load the service's module
   beforeEach(module('keepr.ngOfflineModel'));
 
   // instantiate service
-  var ngOfflineModel, myMock, MyNgOfflineModel, params;
+  var ngOfflineModel, myMock, MyNgOfflineModel;
+  var params = {
+    key: 'myMock',
+    primaryKey: '_id',
+    fields: ['_id', 'name', 'address', 'phone']
+  };
 
   describe('ngOfflineModel: localStorage', function () {
 
     beforeEach(inject(function (_ngOfflineModel_) {
       ngOfflineModel = _ngOfflineModel_;
-      myMock = [
-        {_id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 101', phone: '557188339933'},
-        {_id: 2, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 102', phone: '557188339933'},
-        {_id: 3, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 103', phone: '557188339933'},
-        {_id: 4, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 104', phone: '557188339933'},
-        {_id: 5, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 105', phone: '557188339933'},
-        {_id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933'}
-      ];
-      params = {
-        key: 'myMock',
-        primaryKey: '_id',
-        fields: ['_id', 'name', 'address', 'phone']
-      };
-
+      myMock = resetMock();
       MyNgOfflineModel = ngOfflineModel.setStorageType('localStorage')
                                         .init(myMock, params);
     }));
 
-    it('ngOfflineModel should be created', function () {
-      expect(!!MyNgOfflineModel).toBe(true);
+    afterEach(function () {
+      MyNgOfflineModel.clearAll();
     });
 
     it('#init', function () {
@@ -45,48 +47,30 @@ describe('Service: ngOfflineModel', function () {
     });
 
     it('#create', function(){
-      var contact = [
-        {
-          name: 'This is a test',
-          address: 'Adress test',
-          phone: '557188998877'
-        }
-      ];
+      var contact = {
+        name: 'This is a test',
+        address: 'Adress test',
+        phone: '557188998877'
+      };
       expect(MyNgOfflineModel.create(contact).length).toEqual(7);
     });
 
     it('#update', function(){
       var contact = {
-          name: 'This is a test',
-          address: 'Adress test',
-          phone: '557188998877',
-          _id: 1
-        };
-
-      var filterSelect = function(opts){
-        return opts.el.filter( function (element) {
-          if ( element[opts.elKey] === opts.compareKey){
-            return element;
-          }
-        });
+        name: 'This is a test',
+        address: 'Adress test',
+        phone: '557188998877',
+        _id: 1
       };
 
-      expect(MyNgOfflineModel.update(contact).length).toEqual(7);
+      expect(MyNgOfflineModel.update(contact).length).toEqual(6);
 
       expect(myMock[0].name).toEqual('Allan Benjamin');
       expect(myMock[0].address).toEqual('St. Claire Avenue, Nº 101');
       expect(myMock[0]._id).toEqual(1);
       expect(myMock[0].phone).toEqual('557188339933');
 
-      var listItems = MyNgOfflineModel.getListItems();
-      var opt = {
-        el: listItems,
-        compare: contact,
-        elKey: '_id',
-        compareKey: 1
-      };
-
-      var item = filterSelect(opt)[0];
+      var item = MyNgOfflineModel.getListItems()[0];
 
       expect(item.name).toEqual(contact.name);
       expect(item.address).toEqual(contact.address);
@@ -122,15 +106,13 @@ describe('Service: ngOfflineModel', function () {
     it('#setFields', function () {
       MyNgOfflineModel.setFields(['_id', 'name', 'address']);
 
-      var contact = [
-        {
-          _id: '098340984093',
-          name: 'This is a test',
-          address: 'Adress test',
-          phone: '557188998877',
-          country: 'Brazil'
-        }
-      ];
+      var contact = {
+        _id: '098340984093',
+        name: 'This is a test',
+        address: 'Adress test',
+        phone: '557188998877',
+        country: 'Brazil'
+      };
       var listItems = MyNgOfflineModel.getListItems();
       var listItemsLength = listItems.length;
       var i = 0;
@@ -164,7 +146,7 @@ describe('Service: ngOfflineModel', function () {
       MyNgOfflineModel = ngOfflineModel.setStorageType('localStorage')
                                         .init(myMock, params);
 
-      expect(MyNgOfflineModel.getListItems().length).toEqual(7);
+      expect(MyNgOfflineModel.getListItems().length).toEqual(6);
 
       MyNgOfflineModel.clearAll();
       expect(MyNgOfflineModel.getListItems().length).toEqual(0);
@@ -177,26 +159,13 @@ describe('Service: ngOfflineModel', function () {
 
     beforeEach(inject(function (_ngOfflineModel_) {
       ngOfflineModel = _ngOfflineModel_;
-      myMock = [
-        {_id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 101', phone: '557188339933'},
-        {_id: 2, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 102', phone: '557188339933'},
-        {_id: 3, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 103', phone: '557188339933'},
-        {_id: 4, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 104', phone: '557188339933'},
-        {_id: 5, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 105', phone: '557188339933'},
-        {_id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933'}
-      ];
-      var params = {
-        key: 'myMock',
-        primaryKey: '_id',
-        fields: ['_id', 'name', 'address', 'phone']
-      };
-
+      myMock = resetMock();
       MyNgOfflineModel = ngOfflineModel.setStorageType('sessionStorage')
                                         .init(myMock, params);
     }));
 
-    it('ngOfflineModel should be created', function () {
-      expect(!!MyNgOfflineModel).toBe(true);
+    afterEach(function () {
+      MyNgOfflineModel.clearAll();
     });
 
     it('#init', function () {
@@ -210,48 +179,30 @@ describe('Service: ngOfflineModel', function () {
     });
 
     it('#create', function(){
-      var contact = [
-        {
-          name: 'This is a test',
-          address: 'Adress test',
-          phone: '557188998877'
-        }
-      ];
+      var contact = {
+        name: 'This is a test',
+        address: 'Adress test',
+        phone: '557188998877'
+      };
       expect(MyNgOfflineModel.create(contact).length).toEqual(7);
     });
 
     it('#update', function(){
       var contact = {
-          name: 'This is a test',
-          address: 'Adress test',
-          phone: '557188998877',
-          _id: 1
-        };
-
-      var filterSelect = function(opts){
-        return opts.el.filter( function (element) {
-          if ( element[opts.elKey] === opts.compareKey){
-            return element;
-          }
-        });
+        name: 'This is a test',
+        address: 'Adress test',
+        phone: '557188998877',
+        _id: 1
       };
 
-      expect(MyNgOfflineModel.update(contact).length).toEqual(7);
+      expect(MyNgOfflineModel.update(contact).length).toEqual(6);
 
       expect(myMock[0].name).toEqual('Allan Benjamin');
       expect(myMock[0].address).toEqual('St. Claire Avenue, Nº 101');
       expect(myMock[0]._id).toEqual(1);
       expect(myMock[0].phone).toEqual('557188339933');
 
-      var listItems = MyNgOfflineModel.getListItems();
-      var opt = {
-        el: listItems,
-        compare: contact,
-        elKey: '_id',
-        compareKey: 1
-      };
-
-      var item = filterSelect(opt)[0];
+      var item = MyNgOfflineModel.getListItems()[0];
 
       expect(item.name).toEqual(contact.name);
       expect(item.address).toEqual(contact.address);
@@ -287,15 +238,13 @@ describe('Service: ngOfflineModel', function () {
     it('#setFields', function () {
       MyNgOfflineModel.setFields(['_id', 'name', 'address']);
 
-      var contact = [
-        {
-          _id: '098340984093',
-          name: 'This is a test',
-          address: 'Adress test',
-          phone: '557188998877',
-          country: 'Brazil'
-        }
-      ];
+      var contact = {
+        _id: '098340984093',
+        name: 'This is a test',
+        address: 'Adress test',
+        phone: '557188998877',
+        country: 'Brazil'
+      };
       var listItems = MyNgOfflineModel.getListItems();
       var listItemsLength = listItems.length;
       var i = 0;
@@ -326,7 +275,7 @@ describe('Service: ngOfflineModel', function () {
     });
 
     it('#clearAll', function () {
-      expect(MyNgOfflineModel.getListItems().length).toEqual(7);
+      expect(MyNgOfflineModel.getListItems().length).toEqual(6);
 
       MyNgOfflineModel.clearAll();
       expect(MyNgOfflineModel.getListItems().length).toEqual(0);
