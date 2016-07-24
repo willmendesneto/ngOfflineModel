@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.org/willmendesneto/ngOfflineModel.png?branch=master)](https://travis-ci.org/willmendesneto/ngOfflineModel)
 [![Coverage Status](https://coveralls.io/repos/willmendesneto/ngOfflineModel/badge.svg?branch=master)](https://coveralls.io/r/willmendesneto/ngOfflineModel?branch=master)
+[![Code Climate](https://codeclimate.com/github/willmendesneto/ngOfflineModel/badges/gpa.svg)](https://codeclimate.com/github/willmendesneto/ngOfflineModel)
+
 
 ## Installation
 
