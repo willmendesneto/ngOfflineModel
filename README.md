@@ -1,5 +1,7 @@
 # ngOfflineModel
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/willmendesneto/ngOfflineModel.svg)](https://greenkeeper.io/)
+
 > Your module for Offline operations with AngularJS
 
 [![Build Status](https://travis-ci.org/willmendesneto/ngOfflineModel.png?branch=master)](https://travis-ci.org/willmendesneto/ngOfflineModel)
