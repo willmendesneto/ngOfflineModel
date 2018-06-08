@@ -16,7 +16,7 @@
     "module"
   ],
   "devDependencies": {
-    "angular-mocks": "^1.5.5",
+    "angular-mocks": "^1.7.1",
     "coveralls": "^2.11.6",
     "grunt": "~1.0.1",
     "grunt-autoprefixer": "~3.0.3",
