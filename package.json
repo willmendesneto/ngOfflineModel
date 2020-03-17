@@ -18,7 +18,7 @@
   "devDependencies": {
     "angular-mocks": "^1.5.5",
     "coveralls": "^2.11.6",
-    "grunt": "~1.0.1",
+    "grunt": "~1.1.0",
     "grunt-autoprefixer": "~3.0.3",
     "grunt-concurrent": "~2.3.0",
     "grunt-connect-proxy": "~0.2.0",
